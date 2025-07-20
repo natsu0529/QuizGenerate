@@ -111,7 +111,7 @@ if st.button("quiz生成"):
                 if not valid_quiz_data:
                     raise ValueError("No valid quiz questions found")
                 
-                st.session_state.quiz_data = valid_quiz_data[:10]  # 最大10問
+                st.session_state.quiz_data = valid_quiz_data[:30]  # 最大30問
                 st.session_state.user_answers = [None] * len(st.session_state.quiz_data)
                 st.session_state.grading = False
                 st.session_state.explanations = None
