@@ -29,7 +29,7 @@ if st.button("quiz生成"):
         st.error("授業資料を入力してください。")
     else:
         with st.spinner('Quizを生成中...'):
-                            quiz_prompt = (
+            quiz_prompt = (
                 "あなたは与えられた授業資料（lecture notes）の内容だけを使い、4択クイズ（最大10問）を自動生成するAIです。\n"
                 "【重要】\n"
                 "- 問題・選択肢・解説はすべて日本語で作成してください。\n"
