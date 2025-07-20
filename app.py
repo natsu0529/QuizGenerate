@@ -135,7 +135,7 @@ if st.session_state.quiz_data:
         if len(choices) >= 4:
             # 現在の選択を取得
             current_selection = None
-            if st.session_state.user_answers[idx]:
+            if st.session_state.user_answers[idx] is not None:
                 current_selection = ord(st.session_state.user_answers[idx]) - 65
             
             selected = st.radio(
@@ -146,8 +146,9 @@ if st.session_state.quiz_data:
                 index=current_selection
             )
             
-            # 選択を文字に変換して保存
-            st.session_state.user_answers[idx] = chr(65 + selected)
+            # 選択を文字に変換して保存（selectedがNoneでないことを確認）
+            if selected is not None:
+                st.session_state.user_answers[idx] = chr(65 + selected)
         
         st.markdown("---")
 
