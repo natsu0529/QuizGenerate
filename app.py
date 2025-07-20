@@ -7,7 +7,7 @@ if "GEMINI_API_KEY" not in st.secrets:
     st.stop()
 genai.configure(api_key=st.secrets["GEMINI_API_KEY"])
 
-st.title("箇条書き→レポート・4択Quiz自動生成アプリ")
+st.title("4択Quiz自動生成アプリ")
 
 # 入力欄
 bullets = st.text_area("授業資料や箇条書きを入力してください", height=200)
@@ -21,14 +21,6 @@ if "grading" not in st.session_state:
     st.session_state.grading = False
 if "explanations" not in st.session_state:
     st.session_state.explanations = None
-
-# レポート生成
-if st.button("レポート生成"):
-    prompt = f"以下の箇条書きを、まとまったレポート形式の日本語文章に変換してください。\n\n{bullets}"
-    model = genai.GenerativeModel("models/gemini-1.5-flash")
-    response = model.generate_content(prompt)
-    st.markdown("### レポート結果")
-    st.write(response.text)
 
 # Quiz生成
 if st.button("quiz生成"):
